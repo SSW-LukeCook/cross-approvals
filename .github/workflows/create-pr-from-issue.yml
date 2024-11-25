@@ -19,6 +19,9 @@ jobs:
         app-id: ${{ secrets.APP_ID }}
         private-key: ${{ secrets.APP_PRIVATE_KEY }}
 
+    - name: check-user
+      run: |
+        echo "User object: ${{ toJson(github.event.issue.user) }}"
 
     - name: Checkout repository
       uses: actions/checkout@v4
