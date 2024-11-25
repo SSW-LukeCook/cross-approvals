@@ -6,6 +6,7 @@ on:
 
 env:
   branch_name: ""
+  approvers: "@SSW-LukeCook/salary-sacrifice-approvers"
 
 permissions:
   contents: write
@@ -53,3 +54,4 @@ jobs:
         title: "Add request #${{ github.event.issue.number }} as markdown file"
         body: "Salary sacrifice request #${{ github.event.issue.number }}."
         base: main
+        reviewers: ${{ env.approvers }}
