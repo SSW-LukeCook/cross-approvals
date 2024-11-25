@@ -21,7 +21,7 @@ jobs:
 
     - name: check-user
       run: |
-        echo "User object: ${{ toJson(github.event.issue.user) }}"
+        echo "User name: ${{ github.event.issue.user.name }}"
 
     - name: Checkout repository
       uses: actions/checkout@v4
