@@ -53,7 +53,7 @@ jobs:
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         branch: ${{ env.branch_name }}
-        title: "Add request #${{ github.event.issue.number }} as markdown file"
-        body: "Salary sacrifice request #${{ github.event.issue.number }}."
+        title: "${{ github.event.issue.title }}"
+        body: "${{ github.event.issue.body }}"
         base: main
         reviewers: ${{ env.approvers }}
