@@ -56,4 +56,4 @@ jobs:
         title: "${{ github.event.issue.title }}"
         body: "${{ github.event.issue.body }}"
         base: main
-        reviewers: ${{ env.approvers }}
+        team-reviewers: ${{ env.approvers }}
