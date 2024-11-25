@@ -1,6 +1,6 @@
 name: Salary sacrifice request - laptop
 description: Request approval for salary sacrifice.
-title: "[Salary Sacrifice] Laptop: {{Your name}} | {{YYYY-MM-dd}}"
+title: "Salary Sacrifice | {{Your name}} - Laptop - {{YYYY-MM-dd}}"
 labels: ["triage"]
 assignees:
   - lukecookssw
