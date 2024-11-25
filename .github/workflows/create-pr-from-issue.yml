@@ -1,0 +1,52 @@
+name: Create Branch and PR from Issue
+
+on:
+  issues:
+    types: [opened]
+
+env:
+  branch_name: ""
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  create-branch-and-pr:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Configure Git user
+      run: |
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+        git config --global user.name "github-actions[bot]"
+
+    - name: Create new branch
+      id: create_branch
+      run: |
+        ISSUE_NUMBER=${{ github.event.issue.number }}
+        ISSUE_TITLE="${{ github.event.issue.title }}"
+        SANITIZED_TITLE=$(echo "${ISSUE_TITLE}" | tr -cd '[:alnum:]-' | tr '[:upper:]' '[:lower:]')
+        BRANCH_NAME="issue-${ISSUE_NUMBER}-${SANITIZED_TITLE}"
+        echo "branch_name=$BRANCH_NAME" >> $GITHUB_ENV
+
+    - name: Create markdown file from issue
+      run: |
+        ISSUE_NUMBER=${{ github.event.issue.number }}
+        ISSUE_TITLE="${{ github.event.issue.title }}"
+        ISSUE_BODY="${{ github.event.issue.body }}"
+        BRANCH_NAME="${{ env.branch_name }}"
+        echo "# ${ISSUE_TITLE}" > requests/request-${ISSUE_NUMBER}.md
+        echo "${ISSUE_BODY}" >> requests/request-${ISSUE_NUMBER}.md
+
+    - name: Create pull request
+      uses: peter-evans/create-pull-request@v7
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        branch: ${{ env.branch_name }}
+        title: "Add request #${{ github.event.issue.number }} as markdown file"
+        body: "Salary sacrifice request #${{ github.event.issue.number }}."
+        base: main

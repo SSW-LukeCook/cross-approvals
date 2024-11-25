@@ -1,0 +1,105 @@
+name: Salary sacrifice request - laptop
+description: Request approval for salary sacrifice.
+title: "[Sal-Sac]-[Laptop]: {{Your name}}-{{YYYY-MM-dd}}"
+labels: ["triage"]
+assignees:
+  - lukecookssw
+body:
+  - type: markdown
+    attributes:
+      value: "Tell us about your new toy!"
+  - type: input
+    id: device-brand
+    attributes:
+      label: Device brand/manufacturer
+      description: The brand or manufacturer of the device you're requesting.
+      placeholder: Dell
+    validations:
+      required: true
+  - type: input
+    id: device-model
+    attributes:
+      label: Device model
+      description: What's the model of the device you're requesting (e.g. XPS 13)?
+      placeholder: XPS 9000
+    validations:
+      required: true
+  - type: input
+    id: device-cpu
+    attributes:
+      label: CPU
+      description: What CPU (e.g. M4, i7 13600k, etc.)?
+      placeholder: i7 13600k
+    validations:
+      required: true
+  - type: input
+    id: device-ram
+    attributes:
+      label: RAM
+      description: How many gigabytes of RAM?
+      placeholder: 128GB
+    validations:
+      required: true
+  - type: input
+    id: device-hdd
+    attributes:
+      label: Storage
+      description: How many gigabytes of storage?
+      placeholder: 500GB
+    validations:
+      required: true
+  - type: input
+    id: device-screensize
+    attributes:
+      label: Screen size
+      description: How many inches? 😉
+      placeholder: "17"
+    validations:
+      required: true
+  - type: input
+    id: device-screentype
+    attributes:
+      label: Screen type
+      placeholder: 1080p
+    validations:
+      required: true
+  - type: input
+    id: device-battery
+    attributes:
+      label: Battery life
+      placeholder: 6 hours
+    validations:
+      required: true
+  - type: input
+    id: device-url
+    attributes:
+      label: URL to device
+      description: The URL to the device (e.g. if you are buying a Dell laptop from JB Hi-fi, provide the URL to the JB Hi-fi page).
+    validations:
+      required: true
+  - type: input
+    id: price
+    attributes:
+      label: Total price (including GST).
+      description:  Include all extras (e.g. dongles, adapters, etc.).
+      placeholder: $3000
+    validations:
+      required: true
+  - type: checkboxes
+    id: warranty
+    attributes:
+      label: Local warranty?
+      options:
+        - label: "Yes"
+        - label: "No"
+    validations:
+      required: true
+  - type: checkboxes
+    id: ssw-device
+    attributes:
+      label: Do you already have an SSW laptop?
+      options:
+        - label: "Yes"
+        - label: "No"
+    validations:
+      required: true
