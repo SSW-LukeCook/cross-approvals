@@ -21,7 +21,10 @@ jobs:
 
     - name: check-user
       run: |
-        echo "User name: ${{ github.event.issue.user.name }}"
+        echo "github.actor: ${{ github.actor }}"
+        echo "github.actor json: ${{ toJson(github.actor) }}"
+        echo "github.event.sender.name: ${{ github.event.sender.name }}"
+        echo "github.event.sender json: ${{ toJson(github.event.sender) }}"
 
     - name: Checkout repository
       uses: actions/checkout@v4
