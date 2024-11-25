@@ -42,9 +42,11 @@ jobs:
         ISSUE_TITLE="${{ github.event.issue.title }}"
         ISSUE_BODY="${{ github.event.issue.body }}"
         BRANCH_NAME="${{ env.branch_name }}"
-        mkdir -p requests/${{ github.event.issue.user.name}}
-        echo "# ${ISSUE_TITLE}" > requests/${{ github.event.issue.user.name}}/salary-sacrifice-${ISSUE_NUMBER}.md
-        echo "${ISSUE_BODY}" >> requests/${{ github.event.issue.user.name}}/salary-sacrifice-${ISSUE_NUMBER}.md
+        USER_NAME="${{ github.event.issue.user.name }}"
+        echo "User name: ${USER_NAME}"
+        mkdir -p requests/${USER_NAME}
+        echo "# ${ISSUE_TITLE}" > requests/${USER_NAME}/salary-sacrifice-${ISSUE_NUMBER}.md
+        echo "${ISSUE_BODY}" >> requests/${USER_NAME}/salary-sacrifice-${ISSUE_NUMBER}.md
 
     - name: Create pull request
       uses: peter-evans/create-pull-request@v7
