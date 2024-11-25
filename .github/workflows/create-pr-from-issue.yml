@@ -8,15 +8,18 @@ env:
   branch_name: ""
   approvers: "@SSW-LukeCook/salary-sacrifice-approvers"
 
-permissions:
-  contents: write
-  pull-requests: write
-
 jobs:
   create-branch-and-pr:
     runs-on: ubuntu-latest
 
     steps:
+    - uses: actions/create-github-app-token@v1
+      id: generate-token
+      with:
+        app-id: ${{ secrets.APP_ID }}
+        private-key: ${{ secrets.APP_PRIVATE_KEY }}
+
+
     - name: Checkout repository
       uses: actions/checkout@v4
 
@@ -51,7 +54,7 @@ jobs:
     - name: Create pull request
       uses: peter-evans/create-pull-request@v7
       with:
-        token: ${{ secrets.GITHUB_TOKEN }}
+        token: ${{ steps.generate-token.outputs.token }}
         branch: ${{ env.branch_name }}
         title: "${{ github.event.issue.title }}"
         body: "${{ github.event.issue.body }}"
