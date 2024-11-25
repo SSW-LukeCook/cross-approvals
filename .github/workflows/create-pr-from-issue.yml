@@ -51,7 +51,7 @@ jobs:
         ISSUE_TITLE="${{ github.event.issue.title }}"
         ISSUE_BODY="${{ github.event.issue.body }}"
         BRANCH_NAME="${{ env.branch_name }}"
-        USER_NAME="${{ github.event.issue.user.name }}"
+        USER_NAME="${{ github.actor }}"
         echo "User name: ${USER_NAME}"
         mkdir -p requests/${USER_NAME}
         echo "# ${ISSUE_TITLE}" > requests/${USER_NAME}/salary-sacrifice-${ISSUE_NUMBER}.md
