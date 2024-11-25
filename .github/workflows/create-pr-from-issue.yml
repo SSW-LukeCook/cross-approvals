@@ -33,14 +33,17 @@ jobs:
         BRANCH_NAME="issue-${ISSUE_NUMBER}-${SANITIZED_TITLE}"
         echo "branch_name=$BRANCH_NAME" >> $GITHUB_ENV
 
+        
+
     - name: Create markdown file from issue
       run: |
         ISSUE_NUMBER=${{ github.event.issue.number }}
         ISSUE_TITLE="${{ github.event.issue.title }}"
         ISSUE_BODY="${{ github.event.issue.body }}"
         BRANCH_NAME="${{ env.branch_name }}"
-        echo "# ${ISSUE_TITLE}" > requests/request-${ISSUE_NUMBER}.md
-        echo "${ISSUE_BODY}" >> requests/request-${ISSUE_NUMBER}.md
+        mkdir -p requests/${{ github.event.issue.user.name}}
+        echo "# ${ISSUE_TITLE}" > requests/${{ github.event.issue.user.name}}/salary-sacrifice-${ISSUE_NUMBER}.md
+        echo "${ISSUE_BODY}" >> requests/${{ github.event.issue.user.name}}/salary-sacrifice-${ISSUE_NUMBER}.md
 
     - name: Create pull request
       uses: peter-evans/create-pull-request@v7
