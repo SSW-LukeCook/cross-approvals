@@ -2,7 +2,7 @@ name: Create Branch and PR from Issue
 
 on:
   issues:
-    types: [opened]
+    types: [opened, edited]
 
 env:
   branch_name: ""
