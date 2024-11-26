@@ -1,0 +1,50 @@
+# Salary Sacrifice | Luke Cook - Laptop - 2024-11-26
+### Device brand/manufacturer
+
+Apple
+
+### Device model
+
+bbb
+
+### CPU
+
+kjh
+
+### RAM
+
+kjh
+
+### Storage
+
+kjh
+
+### Screen size
+
+kjh
+
+### Screen type
+
+kjh
+
+### Battery life
+
+kjh
+
+### URL to device
+
+kjh
+
+### Total price (including GST).
+
+kjh
+
+### Local warranty?
+
+- [X] Yes
+- [ ] No
+
+### Do you already have an SSW laptop?
+
+- [x] Yes
+- [ ] No
