@@ -19,13 +19,6 @@ jobs:
         app-id: ${{ secrets.APP_ID }}
         private-key: ${{ secrets.APP_PRIVATE_KEY }}
 
-    - name: check-user
-      run: |
-        echo "github.actor: ${{ github.actor }}"
-        echo "github.actor json: ${{ toJson(github.actor) }}"
-        echo "github.event.sender.name: ${{ github.event.sender.name }}"
-        echo "github.event.sender json: ${{ toJson(github.event.sender) }}"
-
     - name: Checkout repository
       uses: actions/checkout@v4
 
